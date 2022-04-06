@@ -2,20 +2,26 @@
 
 React Native Rutube plugin
 
+### Now in development !!!
+
 ## Installation
 
 ```sh
 npm install @azesmway/react-native-rutube
+
+or
+
+yarn add @azesmway/react-native-rutube
 ```
 
 ## Usage
 
 ```js
-import { ReactNativeRutubeView } from "@azesmway/react-native-rutube";
+import RutubeView from "@azesmway/react-native-rutube";
 
 // ...
 
-<ReactNativeRutubeView color="tomato" />
+<RutubeView src={'https://rutube.ru/video/ec3602e67e169a4a904deb059b873bb4/'} />
 ```
 
 ## Contributing

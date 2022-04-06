@@ -8,7 +8,7 @@ target 'ReactNativeRutubeExample' do
 
   use_react_native!(:path => config["reactNativePath"])
 
-  pod 'azesmway-react-native-rutube', :path => '../..'
+  pod 'react-native-rutube', :path => '../..'
 
   # Enables Flipper.
   #
