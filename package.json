@@ -10,10 +10,7 @@
   "files": [
     "src",
     "lib",
-    "android",
-    "ios",
     "cpp",
-    "react-native-rutube.podspec",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",
@@ -63,15 +60,26 @@
     "jest": "^27.5.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "^17.0.2",
-    "react-native": "^0.67.4",
     "react-native-builder-bob": "^0.18.0",
     "release-it": "^14.2.2",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react": ">=17.0.2",
+    "react-native": ">=0.67.4",
+    "react-native-webview": ">=11.18.1",
+    "react-native-web-webview": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-native-web-webview": {
+      "optional": true
+    },
+    "react-native-webview": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "events": "^3.3.0"
   },
   "jest": {
     "preset": "react-native",
