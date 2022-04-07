@@ -1,32 +1,26 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
-import {
-  View,
-  StyleSheet,
-  Platform,
-  ActivityIndicator,
-  ViewStyle,
-} from 'react-native';
+import { View, StyleSheet, Platform, ActivityIndicator } from 'react-native';
 import { WebView } from './WebView';
 import { EventEmitter } from 'events';
 
 const CUSTOM_USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36';
 
-export interface IRutube {
-  source: string;
-  width: number;
-  height: number;
-  webViewStyle: ViewStyle;
-  webViewProps: ViewStyle;
-  forceAndroidAutoplay: boolean;
-  onFullScreenChange: (_status: any) => void;
-}
+// export interface IRutube {
+//   source: string;
+//   width: number;
+//   height: number;
+//   webViewStyle: ViewStyle;
+//   webViewProps: ViewStyle;
+//   forceAndroidAutoplay: boolean;
+//   onFullScreenChange: (_status: any) => void;
+// }
 
-export interface IVideoData extends Response {
-  video?: {
-    embed_url?: string;
-  };
-}
+// export interface IVideoData extends Response {
+//   video?: {
+//     embed_url?: string;
+//   };
+// }
 
 const RutubeView = ({
   source,
@@ -36,18 +30,14 @@ const RutubeView = ({
   webViewProps,
   forceAndroidAutoplay = false,
   onFullScreenChange = (_status) => {},
-}: IRutube) => {
+}) => {
   const webViewRef = useRef(null);
   const eventEmitter = useRef(new EventEmitter());
   const [playUrl, setPlayUrl] = useState('');
   const [video, setVideo] = useState({});
 
-  const getVideoData = () => {
-    return video;
-  };
-
-  const fetchVideoData = async (url?: any) => {
-    const videoData: IVideoData = await fetch(url, {
+  const fetchVideoData = async (url) => {
+    const videoData = await fetch(url, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
