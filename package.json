@@ -66,7 +66,9 @@
   },
   "peerDependencies": {
     "react": ">=17.0.2",
-    "react-native": ">=0.67.4"
+    "react-native": ">=0.67.4",
+    "react-native-webview": "^11.18.1",
+    "react-native-web-webview": "^1.0.2"
   },
   "peerDependenciesMeta": {
     "react-native-web-webview": {
@@ -78,7 +80,6 @@
   },
   "dependencies": {
     "events": "^3.3.0",
-    "react-native-webview": "^11.18.1",
     "react-native-web-webview": "^1.0.2"
   },
   "jest": {
