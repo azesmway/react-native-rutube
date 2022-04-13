@@ -1,13 +1,33 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { View, StyleSheet, Platform, ActivityIndicator } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Platform,
+  ActivityIndicator,
+  ViewStyle,
+} from 'react-native';
 import { WebView } from './WebView';
 
-const RutubeView = ({ source, width, height, webViewStyle, webViewProps }) => {
+interface IProps {
+  source: string;
+  width: number;
+  height: number;
+  webViewStyle?: ViewStyle;
+  webViewProps?: any;
+}
+
+const RutubeView = ({
+  source,
+  width,
+  height,
+  webViewStyle,
+  webViewProps,
+}: IProps) => {
   const webViewRef = useRef(null);
   const [playUrl, setPlayUrl] = useState('');
-  const [video, setVideo] = useState({});
+  const [video, setVideoData] = useState({});
 
-  const fetchVideoData = async (url) => {
+  const fetchVideoData = async (url: string) => {
     const videoId = url
       .substring(url.indexOf('video/') + 6, url.length)
       .replace('/', '');
@@ -29,7 +49,7 @@ const RutubeView = ({ source, width, height, webViewStyle, webViewProps }) => {
       const videoData = await videoJson.json();
 
       if (videoData && videoData.result) {
-        setVideo(videoData.result);
+        setVideoData(videoData.result);
 
         if (videoData.result.video && videoData.result.video.embed_url) {
           setPlayUrl(videoData.result.video.embed_url);
