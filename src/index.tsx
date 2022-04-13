@@ -25,7 +25,6 @@ const RutubeView = ({
 }: IProps) => {
   const webViewRef = useRef(null);
   const [playUrl, setPlayUrl] = useState('');
-  const [video, setVideoData] = useState({});
 
   const fetchVideoData = async (url: string) => {
     const videoId = url
@@ -49,13 +48,12 @@ const RutubeView = ({
       const videoData = await videoJson.json();
 
       if (videoData && videoData.result) {
-        setVideoData(videoData.result);
-
         if (videoData.result.video && videoData.result.video.embed_url) {
           setPlayUrl(videoData.result.video.embed_url);
         }
       }
     } catch (error) {
+      // @ts-ignore
       console.error('Error parse json', error.message);
     }
   };
