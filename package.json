@@ -1,6 +1,6 @@
 {
   "name": "@azesmway/react-native-rutube",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "React Native Rutube plugin",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
