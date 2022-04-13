@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
   ViewStyle,
 } from 'react-native';
-import { WebView } from './WebView';
+import { WebView } from 'react-native-webview';
 
 interface IProps {
   source: string;
