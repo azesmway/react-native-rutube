@@ -22,12 +22,20 @@ import RutubeView from "@azesmway/react-native-rutube";
 // ...
 
 <RutubeView
-  source={'https://rutube.ru/video/ec3602e67e169a4a904deb059b873bb4/'}
+  source={'https://rutube.ru/video/3754df0851ce78756a6ca0e0a95689fc/'}
   width={400}
   height={200}
 />
 
 // ...
+```
+
+#### Links supported
+
+```js
+https://rutube.ru/video/3754df0851ce78756a6ca0e0a95689fc/
+https://rutube.ru/play/embed/3754df0851ce78756a6ca0e0a95689fc
+https://rutube.ru/pl/?pl_id&pl_type&pl_video=3754df0851ce78756a6ca0e0a95689fc
 ```
 
 #### Props
