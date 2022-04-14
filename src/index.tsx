@@ -27,24 +27,41 @@ const RutubeView = ({
   const [playUrl, setPlayUrl] = useState('');
 
   const fetchVideoData = async (url: string) => {
-    const videoId = url
-      .substring(url.indexOf('video/') + 6, url.length)
-      .replace('/', '');
-    const metaUrl = `https://rutube.ru/pangolin/api/web/video/${videoId}/?pageType=video&client=wdp`;
-    const videoJson = await fetch(metaUrl, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-      },
-    });
+    let videoId: string = '';
 
-    if (!videoJson.ok) {
-      console.error('The request resulted in an error: ', url, videoJson);
+    if (url.indexOf('pl_video=')) {
+      videoId = url.substring(url.indexOf('pl_video=') + 9, url.length);
+    } else if (url.indexOf('video/')) {
+      videoId = url
+        .substring(url.indexOf('pl_video=') + 6, url.length)
+        .replace('/', '');
+    } else if (url.indexOf('embed/')) {
+      videoId = url
+        .substring(url.indexOf('embed/') + 6, url.length)
+        .replace('/', '');
+    }
+
+    if (videoId === '') {
+      console.error('Video id not recognized: ', videoId);
 
       return;
     }
 
     try {
+      const metaUrl = `https://rutube.ru/pangolin/api/web/video/${videoId}/?pageType=video&client=wdp`;
+      const videoJson = await fetch(metaUrl, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!videoJson.ok) {
+        console.error('The request resulted in an error: ', url, videoJson);
+
+        return;
+      }
+
       const videoData = await videoJson.json();
 
       if (videoData && videoData.result) {
