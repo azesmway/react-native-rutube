@@ -29,13 +29,13 @@ const RutubeView = ({
   const fetchVideoData = async (url: string) => {
     let videoId: string = '';
 
-    if (url.indexOf('pl_video=')) {
+    if (url.indexOf('pl_video=') > -1) {
       videoId = url.substring(url.indexOf('pl_video=') + 9, url.length);
-    } else if (url.indexOf('video/')) {
+    } else if (url.indexOf('video/') > -1) {
       videoId = url
         .substring(url.indexOf('pl_video=') + 6, url.length)
         .replace('/', '');
-    } else if (url.indexOf('embed/')) {
+    } else if (url.indexOf('embed/') > -1) {
       videoId = url
         .substring(url.indexOf('embed/') + 6, url.length)
         .replace('/', '');
