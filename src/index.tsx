@@ -1,11 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import {
-  View,
-  StyleSheet,
-  Platform,
-  ActivityIndicator,
-  ViewStyle,
-} from 'react-native';
+import { View, StyleSheet, ActivityIndicator, ViewStyle } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 interface IProps {
@@ -109,7 +103,6 @@ const RutubeView = ({
       width="${width}"
       height="${height}"
       src="${playUrl}"
-      frameborder="0"
       allowfullscreen
       allow="encrypted-media">
     </iframe>
@@ -124,9 +117,9 @@ const RutubeView = ({
   }
 
   return (
-    <View style={{ height, width }}>
+    <View style={{ width, height }}>
       <WebView
-        useWebKit={Platform.OS !== 'web'}
+        useWebKit={true}
         source={getHtmlCode()}
         ref={webViewRef}
         bounces={false}
@@ -148,7 +141,7 @@ const RutubeView = ({
 };
 
 const styles = StyleSheet.create({
-  webView: { backgroundColor: 'transparent' },
+  webView: { backgroundColor: 'transparent', flex: 1 },
 });
 
 export default RutubeView;
