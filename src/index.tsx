@@ -27,7 +27,7 @@ const RutubeView = ({
       videoId = url.substring(url.indexOf('pl_video=') + 9, url.length);
     } else if (url.indexOf('video/') > -1) {
       videoId = url
-        .substring(url.indexOf('pl_video=') + 6, url.length)
+        .substring(url.indexOf('video/') + 6, url.length)
         .replace('/', '');
     } else if (url.indexOf('embed/') > -1) {
       videoId = url
