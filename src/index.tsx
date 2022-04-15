@@ -33,6 +33,10 @@ const RutubeView = ({
       videoId = url
         .substring(url.indexOf('embed/') + 6, url.length)
         .replace('/', '');
+    } else if (url.indexOf('private/') > -1) {
+      videoId = url
+        .substring(url.indexOf('private/') + 8, url.indexOf('/?p'))
+        .replace('/', '');
     }
 
     if (videoId === '') {
