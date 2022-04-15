@@ -25,6 +25,9 @@ const RutubeView = ({
 
     if (url.indexOf('pl_video=') > -1) {
       videoId = url.substring(url.indexOf('pl_video=') + 9, url.length);
+    } else if (url.indexOf('private/') > -1) {
+      videoId = 'private';
+      setPlayUrl(url);
     } else if (url.indexOf('video/') > -1) {
       videoId = url
         .substring(url.indexOf('video/') + 6, url.length)
@@ -32,10 +35,6 @@ const RutubeView = ({
     } else if (url.indexOf('embed/') > -1) {
       videoId = url
         .substring(url.indexOf('embed/') + 6, url.length)
-        .replace('/', '');
-    } else if (url.indexOf('private/') > -1) {
-      videoId = url
-        .substring(url.indexOf('private/') + 8, url.indexOf('/?p'))
         .replace('/', '');
     }
 
@@ -46,6 +45,10 @@ const RutubeView = ({
     }
 
     try {
+      if (videoId === 'private') {
+        return;
+      }
+
       const metaUrl = `https://rutube.ru/pangolin/api/web/video/${videoId}/?pageType=video&client=wdp`;
       const videoJson = await fetch(metaUrl, {
         method: 'GET',
