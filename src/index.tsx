@@ -103,6 +103,7 @@ const RutubeView = ({
       width="${width}"
       height="${height}"
       src="${playUrl}"
+      frameborder="0"
       allowfullscreen
       allow="encrypted-media">
     </iframe>
